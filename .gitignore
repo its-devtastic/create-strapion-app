@@ -1,0 +1,15 @@
+.idea
+# dependencies
+node_modules
+
+# testing
+/coverage
+
+# misc
+.DS_Store
+
+# debug
+npm-debug.log*
+
+# local env files
+.env*.local

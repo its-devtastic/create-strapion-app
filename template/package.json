@@ -1,0 +1,11 @@
+{
+  "name": "template",
+  "version": "1.0.0",
+  "description": "A Strapion project created by create-strapion-app.",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "strapion": "latest"
+  }
+}
