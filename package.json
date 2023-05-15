@@ -1,6 +1,6 @@
 {
   "name": "create-strapion-app",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -18,7 +18,7 @@
     }
   ],
   "license": "MIT",
-  "devDependencies": {
+  "dependencies": {
     "chalk": "^4.1.2",
     "commander": "^10.0.1",
     "fs-extra": "^11.1.1",
