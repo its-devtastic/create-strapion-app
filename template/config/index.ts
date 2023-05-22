@@ -1,4 +1,9 @@
-import { StrapionConfig } from "strapion";
+import {
+  StrapionConfig,
+  dashboardPlugin,
+  contentManagerPlugin,
+  mediaLibraryPlugin,
+} from "strapion";
 
 const strapionConfig: StrapionConfig = {
   strapiUrl: import.meta.env.VITE_STRAPI_URL,
@@ -8,16 +13,26 @@ const strapionConfig: StrapionConfig = {
   routes: [],
   contentTypes: [],
   components: [],
+  hooks: [],
   interfaceLanguages: ["en"],
-  theme: { token: { controlHeight: 38 } },
   plugins: [
-    {
-      name: "contentManager",
-      options: {
-        groups: [{ label: "", items: [] }],
+    dashboardPlugin({
+      recentlyOpened: {
+        renderTitle(item: any) {
+          switch (item.apiID) {
+            case "page":
+              return item.title;
+          }
+        },
       },
-    },
-    { name: "mediaLibrary" },
+    }),
+    contentManagerPlugin({
+      groups: [
+        { label: "content_groups.collections", items: ["page"] },
+        { label: "content_groups.pages", items: ["homepage"] },
+      ],
+    }),
+    mediaLibraryPlugin(),
   ],
 };
 

@@ -1,11 +1,14 @@
 {
   "name": "template",
   "version": "1.0.0",
+  "private": true,
   "description": "A Strapion project created by create-strapion-app.",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "strapion dev",
+    "build": "strapion build"
   },
   "dependencies": {
-    "strapion": "latest"
+    "strapion": "latest",
+    "react": "18.2.0"
   }
 }

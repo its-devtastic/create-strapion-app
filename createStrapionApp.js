@@ -63,10 +63,14 @@ async function createProject(root, dir) {
     path.resolve(__dirname, "./template/package.json")
   );
   pkg.name = dir;
-  fs.writeJson(path.resolve(fullPath, "package.json"), pkg);
+  fs.writeJson(path.resolve(fullPath, "package.json"), pkg, { spaces: 2 });
   fs.copy(
     path.resolve(__dirname, "./template/config/index.ts"),
     path.resolve(fullPath, "./config/index.ts")
+  );
+  fs.copy(
+    path.resolve(__dirname, "./template/index.ts"),
+    path.resolve(fullPath, "./index.ts")
   );
   const html = await fs.readFile(
     path.resolve(__dirname, "./template/index.html")
