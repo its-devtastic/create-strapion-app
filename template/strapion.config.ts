@@ -5,14 +5,17 @@ import {
   mediaLibraryPlugin,
 } from "strapion";
 
+import contentTypes from "./config/contentTypes";
+import components from "./config/components";
+
 const strapionConfig: StrapionConfig = {
   strapiUrl: import.meta.env.VITE_STRAPI_URL,
   icon: "/icon.png",
   title: "My Strapion CMS",
   zones: [],
   routes: [],
-  contentTypes: [],
-  components: [],
+  contentTypes,
+  components,
   hooks: [],
   interfaceLanguages: ["en"],
   plugins: [

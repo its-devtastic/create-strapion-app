@@ -1,5 +1,5 @@
-import createStrapionApp from  "strapion"
+import createStrapionApp from "strapion";
 
-import config from "./config";
+import config from "./strapion.config";
 
-createStrapionApp(config)
+createStrapionApp(config);

@@ -57,29 +57,23 @@ function getFullPath(root, dir) {
 }
 
 async function createProject(root, dir) {
-  const fullPath = getFullPath(root, dir);
-  await fs.ensureDir(fullPath);
-  const pkg = await fs.readJson(
-    path.resolve(__dirname, "./template/package.json")
-  );
+  const dest = getFullPath(root, dir);
+  await fs.ensureDir(dest);
+
+  // Copy template directory to destination
+  await fs.copy(path.resolve(__dirname, "template"), dest);
+
+  // Update package name to project name
+  const pkg = await fs.readJson(path.resolve(dest, "./package.json"));
   pkg.name = dir;
-  fs.writeJson(path.resolve(fullPath, "package.json"), pkg, { spaces: 2 });
-  fs.copy(
-    path.resolve(__dirname, "./template/config/index.ts"),
-    path.resolve(fullPath, "./config/index.ts")
-  );
-  fs.copy(
-    path.resolve(__dirname, "./template/index.ts"),
-    path.resolve(fullPath, "./index.ts")
-  );
-  const html = await fs.readFile(
-    path.resolve(__dirname, "./template/index.html")
-  );
+  fs.writeJson(path.resolve(dest, "package.json"), pkg, { spaces: 2 });
+
+  // Update title to project name
+  const html = await fs.readFile(path.resolve(dest, "./index.html"));
   await fs.writeFile(
-    path.resolve(fullPath, "./index.html"),
+    path.resolve(dest, "./index.html"),
     html.toString().replace("{{title}}", dir)
   );
-  await fs.mkdir(path.resolve(fullPath, "./public"));
 }
 
 module.exports = { init };
